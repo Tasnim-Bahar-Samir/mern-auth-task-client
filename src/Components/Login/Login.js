@@ -1,10 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { json, Link } from 'react-router-dom';
+import { json, Link, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
+    const navigate = useNavigate()
     const {register, handleSubmit, formState:{errors}} = useForm();
     const handleLogin= (data)=>{
         console.log(data)
@@ -20,6 +21,7 @@ const Login = () => {
             console.log(data)
             if(data.success){
                 localStorage.setItem('auth_token',data.data)
+                navigate('/profile')
             }else{
                 toast.error(data.message)
             }

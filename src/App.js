@@ -2,6 +2,7 @@ import { Toaster } from 'react-hot-toast';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Login from './Components/Login/Login';
+import Profile from './Components/Profile/Profile';
 import Register from './Components/Register/Register';
 
 function App() {
@@ -13,6 +14,10 @@ function App() {
   {
     path:'/register',
     element: <Register/>
+  },
+  {
+    path:'/profile',
+    element:<Profile/>
   }
 ]) 
   return (
