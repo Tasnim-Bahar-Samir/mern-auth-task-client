@@ -11,7 +11,7 @@ const Register = () => {
     const handleRegister  = (data)=>{
         console.log(data)
         console.log(data.email,data.password)
-        fetch('http://localhost:5000/users',{
+        fetch('https://mern-authentication-task-server.vercel.app/users',{
           method:"POST",
           headers:{
             'content-type':'application/json'
@@ -21,7 +21,8 @@ const Register = () => {
         .then(res => res.json())
         .then(data =>{
           if(data.success){
-            toast.success(data.message)
+            toast.success("Registration complete. Login Now.")
+            navigate('/login')
           }else{
             toast.error(data.message)
           }
@@ -32,7 +33,7 @@ const Register = () => {
   return (
     <div>
         <form onSubmit={handleSubmit(handleRegister)} className="mx-auto border-2 p-5 rounded-md mt-14 text-left md:w-[500px]" >
-            <h3 className='text-2xl font-semibold text-center my-3'>Register</h3>
+            <h3 className='text-2xl font-semibold  my-3'>Register</h3>
           <div className="form-control w-full ">
             <label className="label">
               <span className="label-text">Name</span>
@@ -94,7 +95,7 @@ const Register = () => {
             {errors.password && <p className="text-red-600" role="alert">{errors.password?.message}</p>}
           </div>
           
-          <button type="submit" className="btn btn-error w-full mt-4">Register</button>
+          <button type="submit" className="btn btn-success w-full mt-4">Register</button>
           <p className="text-center text-sm mt-[6px]">Already have an account?<Link to='/login' className="text-secondary">Login</Link></p>
         </form>
     </div>
