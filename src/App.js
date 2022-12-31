@@ -7,13 +7,12 @@ import Profile from './Components/Profile/Profile';
 import Register from './Components/Register/Register';
 
 function App() {
-  const isLoggedIn = localStorage.getItem('loggedIn')
   const router = createBrowserRouter([
     {
     path: '/',
     element: <Login/>,
     errorElement: <ErrorPage/>
-  },
+    },
     {
     path: '/login',
     element: <Login/>
@@ -25,7 +24,7 @@ function App() {
   {
     path:'/profile',
     element:<Profile/>
-  }
+  },
 ]) 
   return (
     <div className="App">
