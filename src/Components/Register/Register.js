@@ -1,5 +1,6 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
+import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom'
 
 const Register = () => {
@@ -10,7 +11,23 @@ const Register = () => {
     const handleRegister  = (data)=>{
         console.log(data)
         console.log(data.email,data.password)
+        fetch('http://localhost:5000/users',{
+          method:"POST",
+          headers:{
+            'content-type':'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data =>{
+          if(data.success){
+            toast.success(data.message)
+          }else{
+            toast.error(data.message)
+          }
+        })
     }
+
 
   return (
     <div>
